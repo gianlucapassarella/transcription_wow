@@ -7,11 +7,6 @@
 
 **Transcription WOW** is a **FastAPI-based web app** that allows you to:
 - Record audio directly from the browser or upload audio files.
-- Transcribe audio using **OpenAI 
-
-
-**Transcription WOW** is a **FastAPI-based web app** that allows you to:
-- Record audio directly from the browser or upload audio files.
 - Transcribe audio using **OpenAI APIs** (configurable models).
 - Get a **low-latency live draft preview** while speaking.
 - Clean the text from watermarks and reformat it into readable sentences/paragraphs.
