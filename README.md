@@ -1,26 +1,82 @@
-# 🎙️ Transcription WOW
+# 🎤 Transcription WOW ➡️ ✍️  
+
+### Trascrizione e riassunto automatico di audio con l’AI  
+*(Prototipo didattico realizzato in Python + FastAPI + OpenAI)*
+
+---
+
+## 🔎 Cos’è
+**Transcription WOW** è una piccola **web-app locale** che:
+- registra l’audio dal microfono,
+- lo invia all’AI di OpenAI,
+- restituisce una **trascrizione testuale** e un **riassunto automatico**.
+
+👉 È nata come **prototipo didattico**: mostra come integrare Python, un backend web moderno (FastAPI) e un frontend HTML+JS con servizi di AI.
+
+---
+
+## 🎯 Obiettivo del progetto
+Non è un prodotto “pronto per tutti”, ma un esempio pratico.  
+Serve a dimostrare:
+- come si costruisce un prototipo funzionante da zero,
+- come usare **FastAPI** per creare un servizio web,
+- come integrare le **API di OpenAI** in un’applicazione reale,
+- come un docente può guidare dall’idea al prototipo completo.
+
+---
+
+## 🚀 Come provarla (guida rapida)
+
+### 1. Requisiti
+- **Python 3.11+**
+- Un account [OpenAI](https://platform.openai.com/) con **API key attiva**
+
+### 2. Clona e installa
+
+```bash
+
+git clone https://github.com/gianlucapassarella/transcription_wow.git
+
+cd transcription_wow
+
+python -m venv .venv
+
+source .venv/bin/activate   # su Windows: .venv\Scripts\activate
+
+pip install -r requirements.txt
+
+```
+
+### 3. Configura la tua API key
+
+Crea un file .env nella cartella principale con dentro:
+
+```bash
+
+OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxx
+OPENAI_TRANSCRIBE_MODEL=gpt-4o-transcribe   # or whisper-1, gpt-4o-mini-transcribe
+OPENAI_TEXT_MODEL=gpt-4o-mini
+LOGO_NAME=YourName
+RELOAD=false
+LIVE_DRAFT_ENABLED=true
+LANGUAGE=it          # optional, 2-letter code (en, it, fr...)
+TEMPERATURE=0
+PORT=8000
+
+```
+### 4. Avvia il server
+```bash
+
+uvicorn transcription_wow:app --reload
+
+```
+
+Vai su 👉 http://127.0.0.1:8000
+Ti troverai davanti l’interfaccia web per registrare e trascrivere.
 
 ## 🖼️ Screenshot
 
 ![Transcription WOW UI](assets/screenshot.jpg)
-
-
-**Transcription WOW** is a **FastAPI-based web app** that allows you to:
-- Record audio directly from the browser or upload audio files.
-- Transcribe audio using **OpenAI APIs** (configurable models).
-- Get a **low-latency live draft preview** while speaking.
-- Clean the text from watermarks and reformat it into readable sentences/paragraphs.
-- Generate **summaries and bullet-point notes** (“AI Insights”).
-- Automatically save audio files and formatted transcripts (HTML) on your Desktop.
-
-## 🚀 Features
-- **Browser microphone recording** and file upload (`.wav`, `.mp3`, `.ogg`, `.webm`).
-- **Real-time transcription** with multiple model options (`gpt-4o-transcribe`, `whisper-1`, etc.).
-- **Live draft (~5s)** for instant feedback while speaking.
-- **Summary + bullet notes** powered by OpenAI text models.
-- **Automatic incremental saves** and final session file stored under  
-  `Desktop/Transcription WOW`.
-- **Export to styled HTML** ready for reading or printing.
 
 ## 🎥 Demo
 
@@ -28,61 +84,22 @@
 
 
 
-## 📦 Requirements
-Quick install (Python 3.9+):
 
-```bash
-pip install fastapi uvicorn httpx python-dotenv python-multipart jinja2 openai 
-```
+## ⚠️ Nota importante
+È un prototipo didattico, non un prodotto commerciale.
 
-## ⚙️ Configuration
-Create a `.env` file in the project root with the following variables:
+Ogni utente deve usare la propria API key (non sono inclusi crediti).
 
-```ini
-OPENAI_API_KEY=sk-...                # your OpenAI API key
-OPENAI_TRANSCRIBE_MODEL=gpt-4o-transcribe   # or whisper-1, gpt-4o-mini-transcribe
-OPENAI_TEXT_MODEL=gpt-4o-mini
-LOGO_NAME=YourName
-RELOAD=false
-LIVE_DRAFT_ENABLED=true
-LANGUAGE=en                          # optional, 2-letter code (it, en, fr...)
-TEMPERATURE=0
-PORT=8000
-```
+L’app salva i file in locale sulla macchina dove gira il server.
 
-## ▶️ Run
-Start the server with:
+## 📚 Tecnologie usate
+Python 3.11
+FastAPI
+HTML + JavaScript
+OpenAI API
 
-```bash
-python transcription_wow.py
-```
 
-or:
+## 📜 Licenza
+Distribuito sotto licenza MIT – libero uso, modifica e condivisione.
 
-```bash
-uvicorn transcription_wow:app --reload
-```
-
-Open [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser.  
-> ⚠️ Browser microphone requires **HTTPS** or `localhost`.
-
-## 📂 Project structure
-```
-├── transcription_wow.py              # FastAPI backend (API + file saving logic)
-├── templates/
-│   └── index.html      # Web UI (recording, live audio, AI Insights)
-├── .env                # Environment variables (create this file)
-└── Desktop/Transcription WOW/   # Auto-generated folder with audio and transcripts
-```
-
-## 🖼️ Interface
-- **Main column** → transcribed text (with autoscroll).
-- **Sidebar** → live spectrum, RMS history, audio player, and AI Insights panel.
-- **Top toolbar** → controls to record, stop, upload, start a new document, copy text.
-
-## 🔒 Security notes
-- The server sets CSP, Referrer-Policy, and Permissions-Policy headers to protect microphone usage.
-- Files are saved **locally only** in the user’s Desktop folder.
-
-## 📜 License
-MIT — feel free to use, modify and improve.
+#### 🏫 Progetto realizzato da Gianluca Passarella come esempio di laboratorio e dimostrazione didattica.
