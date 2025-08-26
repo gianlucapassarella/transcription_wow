@@ -1,0 +1,73 @@
+# .gitignore
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pytest_cache/
+*.coverage
+.coverage*
+dist/
+build/
+.eggs/
+*.egg-info/
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+*.manifest
+*.spec
+
+# ---- Virtual env ----
+.venv/
+venv/
+env/
+ENV/
+.venv*/
+pip-wheel-metadata/
+
+# ---- Logs ----
+*.log
+*.pot
+*.pyproj
+
+# ---- IDE / Editor / OS ----
+.ideavimrc
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# ---- Env & local configs ----
+.env
+.env.*        # ignore all env files
+!.env.example  # keep only the template in repo
+
+# ---- Cache & bytecode ----
+.cache/
+.mypy_cache/
+.pytest_cache/
+__snapshots__/
+coverage/
+htmlcov/
+
+# ---- Node / frontend (if any) ----
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ---- Misc ----
+*.sqlite3
+*.db
+*.swp
+*.swo
